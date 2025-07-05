@@ -7,3 +7,32 @@ The point cloud data and noisy labels can be found on [RONO GitHub repository](h
 # Results 
 ModelNet 10：
 ![屏幕截图 2025-07-05 162754](https://github.com/user-attachments/assets/6e3a30bf-9867-4c2e-bbcf-6f8aa7bc9e53)
+3D MNIST：
+noise: 20%
+ength of the dataset: 1000
+number of img views: 1
+Image2Pt---------------------------
+96.16
+Pt2Image---------------------------
+94.42
+noise: 40%
+length of the dataset: 1000
+number of img views: 1
+Image2Pt---------------------------
+95.22
+Pt2Image---------------------------
+93.18
+noise: 60%
+length of the dataset: 1000
+number of img views: 1
+Image2Pt---------------------------
+93.25
+Pt2Image---------------------------
+92.28
+noise: 80%
+length of the dataset: 1000
+number of img views: 1
+Image2Pt---------------------------
+83.24
+Pt2Image---------------------------
+82.27
