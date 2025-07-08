@@ -98,7 +98,7 @@ def refinement_datasets(args,
         _img_feat_b, _pt_feat_b = img_net_b(img_feat, img_feat_v), pt_net_b(pt_feat)
         _img_pred_b, _pt_pred_b, _joint_pred_b = model_b(_img_feat_b, _pt_feat_b)
         y_joint_pred = (_joint_pred + _joint_pred_b) * 0.5
-        y_joint_pred = _joint_pred
+        # y_joint_pred = _joint_pred
         
         y_img_pred = F.softmax(_img_pred, dim=1)
         y_pt_pred = F.softmax(_pt_pred, dim=1)
