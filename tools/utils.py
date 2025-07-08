@@ -139,30 +139,6 @@ def cross_model_divide(args, img_net, pt_net, model, epoch, eval_train_loader,  
     gmm.fit(costs)
     scores = gmm.predict_proba(costs)
     scores = scores[:,gmm.means_.argmin()]
-    import matplotlib.pyplot as plt
-    import seaborn as sns
-    # sns.kdeplot(costs.squeeze(), label="Loss Distribution")
-    plt.figure(figsize=(5, 3.5))
-    plt.xlabel("Loss Value",fontsize = 24)
-    plt.ylabel("Frequency",fontsize=24)
-    costs = costs.squeeze()
-    costs[~mask] = torch.clamp(costs[~mask], min=0, max=1)
-    # sns.histplot(costs[mask], bins=50,binwidth=0.02, color="blue", label="Clean Samples", alpha=0.6,edgecolor="blue")
-    # sns.histplot(costs[~mask], bins=50, binwidth=0.02,color="red", label="Noisy Samples", alpha=0.6,edgecolor="red")
-    sns.histplot(costs[mask], bins=35, binwidth=0.03, color="blue", label="Clean Samples", edgecolor="none", alpha=0.4, linewidth=0)
-    sns.histplot(costs[~mask], bins=35, binwidth=0.03, color="red", label="Noisy Samples", edgecolor="none", alpha=0.4, linewidth=0)
-    plt.xticks(fontsize=22)
-    # plt.yticks([0,500,1000],fontsize=22)
-    plt.yticks([0,500,1500],fontsize=22)
-    plt.xlim(0, 1)  #X(0,1)
-    # plt.ylim(0,1000)
-    plt.ylim(0,1500)
-    plt.legend(fontsize=16)
-    # if epoch ==0:
-    #     plt.savefig("GMM_80/loss_distribution{}.pdf".format(model_name),dpi=1000, bbox_inches='tight')
-    # else :
-    #     plt.savefig("GMM_80/loss_distribution{}_{}.pdf".format(model_name, epoch),dpi=1000, bbox_inches='tight')
-    plt.close()
     return scores,gmm.means_.max()
 def cross_model_imgtext_divide(args, img_net, pt_net, model, epoch, eval_train_loader,  input_data_attr,model_name):
     
@@ -223,48 +199,4 @@ def cross_model_imgtext_divide(args, img_net, pt_net, model, epoch, eval_train_l
     print("GMMMeans:", gmm.means_.flatten())
     print("Variances:", gmm.covariances_.flatten())
     print("Weights:", gmm.weights_.flatten())
-
-    # plt.figure(figsize=(8, 4))
-    # plt.hist(costs, bins=50, density=True, alpha=0.5, label='Sample Histogram')
-    # plt.plot(x, pdf, '-r', label='GMM Fit')
-    # plt.title("GMM Fit to Costs")
-    # plt.xlabel("Cost / Loss Value")
-    # plt.ylabel("Density")
-    # plt.legend()
-    # plt.grid(True)
-    # plt.tight_layout()
-    # plt.savefig("costs/gmm_fit_{}.png".format(epoch), dpi=200)
-    # plt.clf()
-    # plt.close()
-
-
-
-
-
-
-
-    # import matplotlib.pyplot as plt
-    # import seaborn as sns
-    # sns.kdeplot(costs.squeeze(), label="Loss Distribution")
-    # plt.figure(figsize=(5, 3.5))
-    # plt.xlabel("Loss Value",fontsize = 24)
-    # plt.ylabel("Frequency",fontsize=24)
-    # costs = costs.squeeze()
-    # costs[~mask] = torch.clamp(costs[~mask], min=0, max=1)
-    # # sns.histplot(costs[mask], bins=50,binwidth=0.02, color="blue", label="Clean Samples", alpha=0.6,edgecolor="blue")
-    # # sns.histplot(costs[~mask], bins=50, binwidth=0.02,color="red", label="Noisy Samples", alpha=0.6,edgecolor="red")
-    # sns.histplot(costs[mask], bins=35, binwidth=0.03, color="blue", label="Clean Samples", edgecolor="none", alpha=0.4, linewidth=0)
-    # sns.histplot(costs[~mask], bins=35, binwidth=0.03, color="red", label="Noisy Samples", edgecolor="none", alpha=0.4, linewidth=0)
-    # plt.xticks(fontsize=22)
-    # # plt.yticks([0,500,1000],fontsize=22)
-    # plt.yticks([0,500,1500],fontsize=22)
-    # plt.xlim(0, 1)  #X(0,1)
-    # # plt.ylim(0,1000)
-    # plt.ylim(0,1500)
-    # plt.legend(fontsize=16)
-    # if epoch ==0:
-    #     plt.savefig("GMM_80/loss_distribution{}.pdf".format(model_name),dpi=1000, bbox_inches='tight')
-    # else :
-    #     plt.savefig("GMM_80/loss_distribution{}_{}.pdf".format(model_name, epoch),dpi=1000, bbox_inches='tight')
-    plt.close()
     return scores,gmm.means_.max()
