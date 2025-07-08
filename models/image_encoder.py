@@ -35,8 +35,6 @@ class Img_encoder(nn.Module):
 
     def forward(self, img, img_v):
         
-        # img_feat = cp.checkpoint(self.img_net, img)
-        # img_feat_v = cp.checkpoint(self.img_net, img_v)
         img_feat = self.img_net(img)
         img_feat_v = self.img_net(img_v)
         img_feat = img_feat.squeeze(3)
