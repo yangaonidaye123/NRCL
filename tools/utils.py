@@ -21,18 +21,6 @@ def calculate_accuracy(outputs, targets):
 
     return 1.0 * n_correct_elems / batch_size
 
-class Accstorage:
-    def __init__(self):
-        self.acc_epochs=[]
-        
-    def add(self, data):
-        self.acc_epochs.append(data)
-    
-    def save_acc(self, save_dir):
-        save_path = os.path.join(save_dir, "Acc.pkl")
-        with open(save_path, 'wb') as f:  # Python 3: open(..., 'wb')
-            pickle.dump(self.acc_epochs, f)
-    
 class EMA:
     def __init__(self, num_data, num_classes, beta=0.99, historical_length=10, warm_up=8):
         self.beta = beta
