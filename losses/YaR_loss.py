@@ -14,8 +14,6 @@ class YA_loss(nn.Module):
         self.warmup = warmup
         
         self.temperature = temperature
-        self.alpha=0.5
-        self.a=0.2
         
         # center层面都可以有很好的策略
         # 正交初始化
