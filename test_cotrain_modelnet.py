@@ -486,7 +486,7 @@ def training(args):
                 #     "epoch_i2p_acc":i2p_acc_a,
                 #     "epoch_p2i_acc":p2i_acc_a
                 # })
-         
+        # if (epoch >= 3 and epoch <= args.warm_up+10) or (epoch >= args.warm_up-1 and (epoch+1)%20==0 and(epoch+1)<=140): the setting for ModelNet10 asy40 
         if (epoch >= 3 and epoch <= args.warm_up+10) or (epoch >= args.warm_up-1 and (epoch+1)%20==0): 
             print('\n==== Divide %s epoch training data ===='%(epoch+1)) 
             ###get centers
